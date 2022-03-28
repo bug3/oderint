@@ -1,3 +1,6 @@
 #!/bin/bash
 
-sudo python setup.py install --record files.txt
+app="oderint"
+path="$HOME/.$app"
+dirs=("data" "events" "scripts" "src")
+files=("setup.py")
