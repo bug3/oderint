@@ -16,6 +16,10 @@ install () {
     for dir in ${dirs[@]}; do
         cp -r $dir $path
     done
+
+    for file in ${files[@]}; do
+        cp $file $path
+    done
 }
 
 uninstall () {
