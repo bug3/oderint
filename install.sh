@@ -20,6 +20,8 @@ install () {
     for file in ${files[@]}; do
         cp $file $path
     done
+
+    pip install -e $path
 }
 
 uninstall () {
