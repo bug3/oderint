@@ -1,1 +1,5 @@
 #!/bin/bash
+
+source data/config
+
+watch -d -t -g ls -lR $file
