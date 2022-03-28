@@ -10,3 +10,17 @@ from subprocess import getstatusoutput, run
 def cli(event, script):
     """This is description"""
     click.echo(f"event={event} script={script}")
+
+
+def test():
+    path = dirname(dirname(realpath(__file__)))
+    status, output = getstatusoutput(path + "/events/on-change")
+
+    if status == 0:
+        run(path + "/scripts/run")
+    else:
+        print(output)
+
+
+if __name__ == "__main__":
+    test()
