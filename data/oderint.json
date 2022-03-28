@@ -1,0 +1,5 @@
+{
+    "file": "test.txt",
+    "event": "temp-event",
+    "script": "temp-script"
+}
