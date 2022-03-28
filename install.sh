@@ -12,6 +12,10 @@ install () {
         echo "$path already exists"
         exit 1
     fi
+
+    for dir in ${dirs[@]}; do
+        cp -r $dir $path
+    done
 }
 
 uninstall () {
