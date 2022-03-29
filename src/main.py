@@ -5,6 +5,7 @@ from subprocess import getstatusoutput, run
 
 
 @click.command()
+@click.argument("file", type=click.Path(exists=True))
 @click.option("--event", default="on-change", help="Event")
 @click.option("--script", default="run", help="The script to run when the event occurs")
 def cli(event, script):
