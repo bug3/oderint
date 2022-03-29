@@ -11,6 +11,7 @@ from subprocess import getstatusoutput, run
 def cli(file, event, script):
     """This is description"""
     checkParams(event, script)
+    updateJson(realpath(file), event, script)
 
 
 def checkParams(event, script):
@@ -22,6 +23,19 @@ def checkParams(event, script):
         raise click.UsageError(
             f"Invalid value for '--script': Path 'scripts/{script}' does not exist."
         )
+
+
+def updateJson(b, u, g):
+    with open("data/oderint.json", "r+") as config:
+        data = json.load(config)
+
+        data["file"] = b
+        data["event"] = u
+        data["script"] = g
+
+        config.seek(0)
+        json.dump(data, config, indent=4)
+        config.truncate()
 
 
 if __name__ == "__main__":
