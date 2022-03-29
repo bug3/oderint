@@ -10,7 +10,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "oderint = src.main:test",
+            "oderint = src.main:cli",
         ],
     },
 )
