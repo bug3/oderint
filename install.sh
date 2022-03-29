@@ -2,6 +2,7 @@
 
 app="oderint"
 path="$HOME/.$app"
+localPath="$HOME/.local"
 dirs=("data" "events" "scripts" "src")
 files=("setup.py")
 
@@ -26,6 +27,7 @@ install () {
 
 uninstall () {
     rm -r $path
+    rm $localPath/bin/oderint
 }
 
 if [ $# -eq 0 ]; then
