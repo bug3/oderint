@@ -12,6 +12,7 @@ def cli(file, event, script):
     """This is description"""
     checkParams(event, script)
     updateJson(realpath(file), event, script)
+    watch(event, script)
 
 
 def checkParams(event, script):
@@ -36,6 +37,18 @@ def updateJson(b, u, g):
         config.seek(0)
         json.dump(data, config, indent=4)
         config.truncate()
+
+
+def watch(event, script):
+    path = dirname(dirname(realpath(__file__)))
+
+    while True:
+        status, output = getstatusoutput(path + "/events/" + event)
+
+        if status == 0:
+            run(path + "/scripts/" + script)
+        else:
+            raise click.ClickException(output)
 
 
 if __name__ == "__main__":
