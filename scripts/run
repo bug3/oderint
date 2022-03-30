@@ -1,12 +1,18 @@
 #!/bin/bash
 
 case expression in  
-    pattern_1)  
-        statements  
-        ;;  
-    pattern_2)  
-        statements  
-        ;;  
+    c)
+        if gcc $file -o $tempFile; then
+        	./$tempFile
+        	rm $tempFile
+        fi
+        ;;
+    cpp)
+        if g++ $file -o $tempFile; then
+        	./$tempFile
+        	rm $tempFile
+        fi
+        ;;
     pattern_3)  
         statements  
         ;;  
