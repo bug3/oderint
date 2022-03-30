@@ -45,7 +45,7 @@ def updateJson(b, u, g):
 
 def watch(event, script):
     chdir(path)
-    
+
     while True:
         status, output = getstatusoutput(path + "/events/" + event)
 
