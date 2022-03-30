@@ -13,10 +13,10 @@ case expression in
         	rm $tempFile
         fi
         ;;
-    pattern_3)  
-        statements  
-        ;;  
-    pattern-n)  
+    py)
+        python $file
+        ;;
+    pattern-n)
         statements  
         ;;  
     *)  
