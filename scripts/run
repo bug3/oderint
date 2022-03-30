@@ -16,10 +16,10 @@ case expression in
     py)
         python $file
         ;;
-    pattern-n)
-        statements  
-        ;;  
-    *)  
+    js)
+        node $file
+        ;;
+    *)
         statements  
         ;;  
 esac
