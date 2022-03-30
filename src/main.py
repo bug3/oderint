@@ -1,5 +1,6 @@
 import click
 import json
+from os import chdir
 from os.path import exists, dirname, realpath
 from subprocess import getstatusoutput, run
 
@@ -43,6 +44,8 @@ def updateJson(b, u, g):
 
 
 def watch(event, script):
+    chdir(path)
+    
     while True:
         status, output = getstatusoutput(path + "/events/" + event)
 

@@ -22,7 +22,8 @@ install () {
         cp $file $path
     done
 
-    pip install -e $path
+    cd $path
+    pip install -e .
 }
 
 uninstall () {
