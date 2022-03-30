@@ -1,6 +1,6 @@
 #!/bin/bash
 
-case expression in  
+case expression in
     c)
         if gcc $file -o $tempFile; then
         	./$tempFile
@@ -20,6 +20,7 @@ case expression in
         node $file
         ;;
     *)
-        statements  
-        ;;  
+        echo "$fileExt extension not defined"
+        exit 1
+        ;;
 esac
