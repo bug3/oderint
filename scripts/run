@@ -1,6 +1,8 @@
 #!/bin/bash
 
-case expression in
+source data/config
+
+case $fileExt in
     c)
         if gcc $file -o $tempFile; then
         	./$tempFile
