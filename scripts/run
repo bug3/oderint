@@ -21,6 +21,11 @@ case $fileExt in
     js)
         node $file
         ;;
+    html)
+    	if ! lsof -i:$port &>/dev/null; then
+    		
+    	fi
+    	;;
     sh)
     	/bin/bash $file
     	;;
