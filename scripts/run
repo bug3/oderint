@@ -3,9 +3,6 @@
 source data/config
 
 case $fileExt in
-	sh)
-			/bin/bash $file
-		;;
     c)
         if gcc $file -o $tempFile; then
         	./$tempFile
@@ -24,6 +21,9 @@ case $fileExt in
     js)
         node $file
         ;;
+    sh)
+    	/bin/bash $file
+    	;;
     *)
     	if [[ -x FILE ]]; then
     		$file
