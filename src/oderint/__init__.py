@@ -57,6 +57,9 @@ def updateJson():
 
 
 def watch():
+    if config["runFirst"]:
+        runScript()
+
     while True:
         status, output = getstatusoutput("events/" + config["event"])
 
