@@ -13,15 +13,18 @@ info = {}
 @click.argument("file", type=click.Path(exists=True))
 @click.option("--event", default="on-change", help="Event to be listen")
 @click.option("--script", default="run", help="The script to run when the event occurs")
-@click.option("--runFirst", default=True, help="Run script without listening for event")
+@click.option("--runfirst", default=True, help="Run script without listening for event")
 @click.option("--port", default=3000, help="Shows which port to open localhost")
-def cli(file, event, script):
+def cli(file, event, script, runfirst, port):
     """This is description"""
     global config, info
 
     config["file"] = realpath(file)
     config["event"] = event
     config["script"] = script
+    config["runFirst"] = runfirst
+    config["port"] = port
+
     info["extension"] = splitext(file)[1]
 
     chdir(dirname(dirname(dirname(realpath(__file__)))))
@@ -58,12 +61,16 @@ def watch():
         status, output = getstatusoutput("events/" + config["event"])
 
         if status == 0:
-            if info["extension"] != ".html":
-                system("clear")
-
-            run("scripts/" + config["script"])
+            runScript()
         else:
             raise click.ClickException(output)
+
+
+def runScript():
+    if info["extension"] != ".html":
+        system("clear")
+
+    run("scripts/" + config["script"])
 
 
 if __name__ == "__main__":
