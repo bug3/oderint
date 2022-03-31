@@ -60,6 +60,10 @@ def watch():
     if config["runFirst"]:
         runScript()
 
+    listenEvent()
+
+
+def listenEvent():
     while True:
         status, output = getstatusoutput("events/" + config["event"])
 
