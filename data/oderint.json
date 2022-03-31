@@ -1,5 +1,6 @@
 {
     "file": "test.txt",
     "event": "temp-event",
-    "script": "temp-script"
+    "script": "temp-script",
+    "port": 3000
 }
