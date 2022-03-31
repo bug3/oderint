@@ -25,7 +25,11 @@ case $fileExt in
         node $file
         ;;
     *)
-        echo "$fileExt extension not defined"
-        exit 1
+    	if [[ -x FILE ]]; then
+    		$file
+    	else
+        	echo "$fileExt extension not defined"
+        	exit 1
+        fi
         ;;
 esac
