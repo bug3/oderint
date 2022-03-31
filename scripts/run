@@ -23,7 +23,9 @@ case $fileExt in
         ;;
     html)
     	if ! lsof -i:$port &>/dev/null; then
-    		
+    		live-server --port $port $dir &
+    		xdg-open http://localhost:$port &&
+            fg
     	fi
     	;;
     sh)
