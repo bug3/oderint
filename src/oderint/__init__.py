@@ -1,6 +1,6 @@
 import click
 import json
-from os import chdir
+from os import chdir, system
 from os.path import exists, dirname, realpath
 from subprocess import getstatusoutput, run
 
@@ -49,6 +49,8 @@ def watch(event, script):
         status, output = getstatusoutput("events/" + event)
 
         if status == 0:
+            system("clear")
+
             run("scripts/" + script)
         else:
             raise click.ClickException(output)
