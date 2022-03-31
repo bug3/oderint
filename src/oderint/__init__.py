@@ -1,7 +1,7 @@
 import click
 import json
 from os import chdir, system
-from os.path import exists, dirname, realpath
+from os.path import exists, dirname, realpath, splitext
 from subprocess import getstatusoutput, run
 
 
@@ -13,11 +13,12 @@ def cli(file, event, script):
     """This is description"""
 
     fullpath = realpath(file)
+    extension = splitext(fullpath)[1]
 
     chdir(dirname(dirname(dirname(realpath(__file__)))))
     checkParams(event, script)
     updateJson(fullpath, event, script)
-    watch(event, script)
+    watch(extension, event, script)
 
 
 def checkParams(event, script):
@@ -44,12 +45,13 @@ def updateJson(b, u, g):
         config.truncate()
 
 
-def watch(event, script):
+def watch(extension, event, script):
     while True:
         status, output = getstatusoutput("events/" + event)
 
         if status == 0:
-            system("clear")
+            if extension != ".html":
+                system("clear")
 
             run("scripts/" + script)
         else:
