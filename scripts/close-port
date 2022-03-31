@@ -1,1 +1,5 @@
 #!/bin/bash
+
+source data/config
+
+lsof -i:$port | awk '{print $2}' | uniq | grep -o '[0-9]\+' | xargs kill
