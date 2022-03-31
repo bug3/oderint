@@ -60,7 +60,10 @@ def watch():
     if config["runFirst"]:
         runScript()
 
-    listenEvent()
+    try:
+        listenEvent()
+    except KeyboardInterrupt:
+        print("Close defined port")
 
 
 def listenEvent():
