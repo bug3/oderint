@@ -63,7 +63,7 @@ def watch():
     try:
         listenEvent()
     except KeyboardInterrupt:
-        print("Close defined port")
+        run("scripts/close-port")
 
 
 def listenEvent():
