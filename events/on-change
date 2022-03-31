@@ -2,4 +2,4 @@
 
 source data/config
 
-watch -d -t -g ls -lR $file
+watch -d -t -g ls -lR $dir
