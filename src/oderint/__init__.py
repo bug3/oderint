@@ -11,8 +11,10 @@ info = {}
 
 @click.command()
 @click.argument("file", type=click.Path(exists=True))
-@click.option("--event", default="on-change", help="Event")
+@click.option("--event", default="on-change", help="Event to be listen")
 @click.option("--script", default="run", help="The script to run when the event occurs")
+@click.option("--runFirst", default=True, help="Run script without listening for event")
+@click.option("--port", default=3000, help="Shows which port to open localhost")
 def cli(file, event, script):
     """This is description"""
     global config, info
