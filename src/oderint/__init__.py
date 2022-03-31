@@ -5,55 +5,61 @@ from os.path import exists, dirname, realpath, splitext
 from subprocess import getstatusoutput, run
 
 
+config = {}
+info = {}
+
+
 @click.command()
 @click.argument("file", type=click.Path(exists=True))
 @click.option("--event", default="on-change", help="Event")
 @click.option("--script", default="run", help="The script to run when the event occurs")
 def cli(file, event, script):
     """This is description"""
+    global config, info
 
-    fullpath = realpath(file)
-    extension = splitext(fullpath)[1]
+    config["file"] = realpath(file)
+    config["event"] = event
+    config["script"] = script
+    info["extension"] = splitext(file)[1]
 
     chdir(dirname(dirname(dirname(realpath(__file__)))))
-    checkParams(event, script)
-    updateJson(fullpath, event, script)
-    watch(extension, event, script)
+    checkParams()
+    updateJson()
+    watch()
 
 
-def checkParams(event, script):
-    if exists("events/" + event) == False:
+def checkParams():
+    if exists("events/" + config["event"]) == False:
         raise click.UsageError(
-            f"Invalid value for '--event': Path 'events/{event}' does not exist."
+            f"Invalid value for '--event': Path 'events/{config['event']}' does not exist."
         )
-    if exists("scripts/" + script) == False:
+    if exists("scripts/" + config["script"]) == False:
         raise click.UsageError(
-            f"Invalid value for '--script': Path 'scripts/{script}' does not exist."
+            f"Invalid value for '--script': Path 'scripts/{config['script']}' does not exist."
         )
 
 
-def updateJson(b, u, g):
-    with open("data/oderint.json", "r+") as config:
-        data = json.load(config)
+def updateJson():
+    with open("data/oderint.json", "r+") as configFile:
+        data = json.load(configFile)
 
-        data["file"] = b
-        data["event"] = u
-        data["script"] = g
+        for i in config:
+            data[i] = config[i]
 
-        config.seek(0)
-        json.dump(data, config, indent=4)
-        config.truncate()
+        configFile.seek(0)
+        json.dump(data, configFile, indent=4)
+        configFile.truncate()
 
 
-def watch(extension, event, script):
+def watch():
     while True:
-        status, output = getstatusoutput("events/" + event)
+        status, output = getstatusoutput("events/" + config["event"])
 
         if status == 0:
-            if extension != ".html":
+            if info["extension"] != ".html":
                 system("clear")
 
-            run("scripts/" + script)
+            run("scripts/" + config["script"])
         else:
             raise click.ClickException(output)
 
