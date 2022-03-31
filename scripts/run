@@ -3,6 +3,9 @@
 source data/config
 
 case $fileExt in
+	sh)
+			/bin/bash $file
+		;;
     c)
         if gcc $file -o $tempFile; then
         	./$tempFile
