@@ -63,7 +63,8 @@ def watch():
     try:
         listenEvent()
     except KeyboardInterrupt:
-        run("scripts/close-port")
+        if info["extension"] == ".html":
+            run("scripts/close-port")
 
 
 def listenEvent():
