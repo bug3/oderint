@@ -10,22 +10,22 @@ info = {}
 
 
 @click.command()
-@click.argument("file", type=click.Path(exists=True))
+@click.argument("path", type=click.Path(exists=True))
 @click.option("--event", default="on-change", help="Event to be listen")
 @click.option("--script", default="run", help="The script to run when the event occurs")
 @click.option("--runfirst", default=True, help="Run script without listening for event")
 @click.option("--port", default=3000, help="Shows which port to open localhost")
-def cli(file, event, script, runfirst, port):
+def cli(path, event, script, runfirst, port):
     """This is description"""
     global config, info
 
-    config["file"] = realpath(file)
+    config["path"] = realpath(path)
     config["event"] = event
     config["script"] = script
     config["runFirst"] = runfirst
     config["port"] = port
 
-    info["extension"] = splitext(file)[1]
+    info["extension"] = splitext(path)[1]
 
     chdir(dirname(dirname(dirname(realpath(__file__)))))
     checkParams()

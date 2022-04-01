@@ -1,5 +1,5 @@
 {
-    "file": "test.txt",
+    "path": "test.txt",
     "event": "temp-event",
     "script": "temp-script",
     "runFirst": true,
