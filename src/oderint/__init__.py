@@ -1,7 +1,7 @@
 import click
 import json
 from os import chdir, system
-from os.path import exists, dirname, realpath, splitext
+from os.path import exists, dirname, realpath, isdir
 from subprocess import getstatusoutput, run
 
 
@@ -25,7 +25,7 @@ def cli(path, event, script, runfirst, port):
     config["runFirst"] = runfirst
     config["port"] = port
 
-    info["extension"] = splitext(path)[1]
+    info["isDir"] = isdir(path)
 
     chdir(dirname(dirname(dirname(realpath(__file__)))))
     checkParams()
@@ -63,7 +63,7 @@ def watch():
     try:
         listenEvent()
     except KeyboardInterrupt:
-        if info["extension"] == ".html":
+        if info["isDir"]:
             run("scripts/close-port")
 
 
@@ -78,7 +78,7 @@ def listenEvent():
 
 
 def runScript():
-    if info["extension"] != ".html":
+    if not info["isDir"]:
         system("clear")
 
     run("scripts/" + config["script"])
