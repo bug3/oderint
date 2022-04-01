@@ -2,40 +2,42 @@
 
 source data/config
 
-case $fileExt in
-    c)
-        if gcc $file -o $tempFile; then
-        	./$tempFile
-        	rm $tempFile
-        fi
-        ;;
-    cpp)
-        if g++ $file -o $tempFile; then
-        	./$tempFile
-        	rm $tempFile
-        fi
-        ;;
-    py)
-        python $file
-        ;;
-    js)
-        node $file
-        ;;
-    html)
-    	if ! lsof -i:$port &>/dev/null; then
-    		live-server --port $port $dir &
-    		xdg-open http://localhost:$port
-    	fi
-    	;;
-    sh)
-    	/bin/bash $file
-    	;;
-    *)
-    	if [[ -x FILE ]]; then
-    		$file
-    	else
-        	echo "$fileExt extension not defined"
-        	exit 1
-        fi
-        ;;
-esac
+checkFileExt () {
+	case $fileExt in
+	    c)
+	        if gcc $file -o $tempFile; then
+	        	./$tempFile
+	        	rm $tempFile
+	        fi
+	        ;;
+	    cpp)
+	        if g++ $file -o $tempFile; then
+	        	./$tempFile
+	        	rm $tempFile
+	        fi
+	        ;;
+	    py)
+	        python $file
+	        ;;
+	    js)
+	        node $file
+	        ;;
+	    html)
+	    	if ! lsof -i:$port &>/dev/null; then
+	    		live-server --port $port $dir &
+	    		xdg-open http://localhost:$port
+	    	fi
+	    	;;
+	    sh)
+	    	/bin/bash $file
+	    	;;
+	    *)
+	    	if [[ -x FILE ]]; then
+	    		$file
+	    	else
+	        	echo "$fileExt extension not defined"
+	        	exit 1
+	        fi
+	        ;;
+	esac
+}
