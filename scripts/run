@@ -22,15 +22,6 @@ checkFileExt () {
 	    js)
 	        node $file
 	        ;;
-	    html)
-	    	if ! lsof -i:$port &>/dev/null; then
-	    		live-server --port $port $dir &
-	    		xdg-open http://localhost:$port
-	    	fi
-	    	;;
-	    sh)
-	    	/bin/bash $file
-	    	;;
 	    *)
 	    	if [[ -x FILE ]]; then
 	    		$file
