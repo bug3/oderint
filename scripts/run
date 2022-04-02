@@ -3,42 +3,42 @@
 source data/config
 source scripts/format
 
-checkFileExt () {
-	case $fileExt in
-	    c)
-	        if gcc $path -o $tempFile; then
-	        	./$tempFile
-	        	rm $tempFile
-	        fi
-	        ;;
-	    cpp)
-	        if g++ $path -o $tempFile; then
-	        	./$tempFile
-	        	rm $tempFile
-	        fi
-	        ;;
-	    py)
-	        python $path
-	        ;;
-	    js)
-	        node $path
-	        ;;
-	    *)
-	    	if [[ -x $path ]]; then
-	    		$path
-	    	else
-	        	echo "$fileExt extension not defined"
-	        	exit 1
-	        fi
-	        ;;
-	esac
+checkFileExt() {
+    case $fileExt in
+        c)
+            if gcc $path -o $tempFile; then
+                ./$tempFile
+                rm $tempFile
+            fi
+            ;;
+        cpp)
+            if g++ $path -o $tempFile; then
+                ./$tempFile
+                rm $tempFile
+            fi
+            ;;
+        py)
+            python $path
+            ;;
+        js)
+            node $path
+            ;;
+        *)
+            if [[ -x $path ]]; then
+                $path
+            else
+                echo "$fileExt extension not defined"
+                exit 1
+            fi
+            ;;
+    esac
 }
 
 if [[ -d $path ]]; then
-	if ! lsof -i:$port &>/dev/null; then
-	    live-server --port $port $path &
-	    xdg-open http://localhost:$port
-	fi
+    if ! lsof -i:$port &> /dev/null; then
+        live-server --port $port $path &
+        xdg-open http://localhost:$port
+    fi
 else
-	checkFileExt
+    checkFileExt
 fi
