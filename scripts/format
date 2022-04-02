@@ -22,7 +22,9 @@ checkFileExt() {
 }
 
 if [[ -d $path ]]; then
-    
+    if ! lsof -i:$port &> /dev/null; then
+        
+    fi
 else
     checkFileExt
 fi
