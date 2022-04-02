@@ -5,7 +5,7 @@ source data/config
 checkFileExt() {
     case $fileExt in
         c | cpp | js)
-            
+            clang-format -i -style=Google $path
             ;;
         py)
             black -q $path
