@@ -20,3 +20,9 @@ checkFileExt() {
             ;;
     esac
 }
+
+if [[ -d $path ]]; then
+    
+else
+    checkFileExt
+fi
