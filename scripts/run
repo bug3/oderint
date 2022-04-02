@@ -5,26 +5,26 @@ source data/config
 checkFileExt () {
 	case $fileExt in
 	    c)
-	        if gcc $file -o $tempFile; then
+	        if gcc $path -o $tempFile; then
 	        	./$tempFile
 	        	rm $tempFile
 	        fi
 	        ;;
 	    cpp)
-	        if g++ $file -o $tempFile; then
+	        if g++ $path -o $tempFile; then
 	        	./$tempFile
 	        	rm $tempFile
 	        fi
 	        ;;
 	    py)
-	        python $file
+	        python $path
 	        ;;
 	    js)
-	        node $file
+	        node $path
 	        ;;
 	    *)
-	    	if [[ -x FILE ]]; then
-	    		$file
+	    	if [[ -x $path ]]; then
+	    		$path
 	    	else
 	        	echo "$fileExt extension not defined"
 	        	exit 1
@@ -35,9 +35,9 @@ checkFileExt () {
 
 if [[ -d $path ]]; then
 	if ! lsof -i:$port &>/dev/null; then
-	    live-server --port $port $dir &
+	    live-server --port $port $path &
 	    xdg-open http://localhost:$port
 	fi
 else
-	checkFileExt()
+	checkFileExt
 fi
