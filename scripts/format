@@ -1,1 +1,22 @@
 #!/bin/bash
+
+source data/config
+
+checkFileExt() {
+    case $fileExt in
+        c | cpp | js)
+            
+            ;;
+        py)
+            
+            ;;
+        *)
+            if [[ -x $path ]]; then
+                
+            else
+                echo "$fileExt extension not defined"
+                exit 1
+            fi
+            ;;
+    esac
+}
