@@ -12,7 +12,7 @@ checkFileExt() {
             ;;
         *)
             if [[ -x $path ]]; then
-                
+                shfmt -w -sr -ci -i=4 $path
             else
                 echo "$fileExt extension not defined"
                 exit 1
