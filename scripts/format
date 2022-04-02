@@ -8,7 +8,7 @@ checkFileExt() {
             
             ;;
         py)
-            
+            black -q $path
             ;;
         *)
             if [[ -x $path ]]; then
