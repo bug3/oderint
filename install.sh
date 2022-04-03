@@ -22,14 +22,20 @@ install() {
         cp $file $path
     done
 
+    appendText
+
     cd $path
     pip install -e .
 }
 
 uninstall() {
+    removeText
+
     rm -r $path
     rm $localPath/bin/oderint
 }
+
+source data/append-remove.sh $HOME/.vimrc data/vimrc
 
 if [ $# -eq 0 ]; then
     install
