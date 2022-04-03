@@ -6,7 +6,7 @@ localPath="$HOME/.local"
 dirs=("data" "events" "scripts" "src")
 files=("setup.py")
 
-install () {
+install() {
     if [[ ! -e $path ]]; then
         mkdir $path
     else
@@ -26,13 +26,13 @@ install () {
     pip install -e .
 }
 
-uninstall () {
+uninstall() {
     rm -r $path
     rm $localPath/bin/oderint
 }
 
 if [ $# -eq 0 ]; then
-	install
+    install
 elif [ $1 == "-r" ]; then
-	uninstall
+    uninstall
 fi
