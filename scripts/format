@@ -22,9 +22,7 @@ checkFileExt() {
 }
 
 if [[ -d $path ]]; then
-    if ! lsof -i:$port &> /dev/null; then
-        prettier -w $path
-    fi
+    prettier -w $path
 else
     checkFileExt
 fi
