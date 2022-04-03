@@ -3,3 +3,5 @@
 destFile=$1
 textFile=$2
 tempFile=.vimrc-oderint.tmp
+
+cp $destFile $destFile.bak
