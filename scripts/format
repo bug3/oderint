@@ -22,7 +22,7 @@ checkFileExt() {
 }
 
 if [[ -d $path ]]; then
-    prettier -w $path
+    prettier -w --loglevel error $path
 else
     checkFileExt
 fi
