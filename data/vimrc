@@ -1,0 +1,5 @@
+
+" Oderint configuration to format the file
+set autoread
+set updatetime=999
+au FocusGained,BufEnter,BufWinEnter,CursorHold,CursorMoved * :checktime
