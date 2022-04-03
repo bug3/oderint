@@ -25,6 +25,7 @@ checkFileExt() {
             ;;
         *)
             if [[ -x $path ]]; then
+                cd $(dirname $path)
                 $path
             else
                 echo "$fileExt extension not defined"
