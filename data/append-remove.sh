@@ -17,3 +17,15 @@ appendText () {
         cat $textFile >> $destFile
     fi    
 }
+
+removeText () {
+    wordCount=$(grep -o "$(cat $textFile)" $destFile | wc -l)
+    isTextExists=$([[ $wordCount -ne 0 ]] && echo true || echo false)
+
+    if $isTextExists; then
+        diff $destFile $textFile | sed -n 's/^< //p' > $tempFile
+        lineCount=$(cat $tempFile | wc -l)
+        echo "$(head -$lineCount $tempFile)" > $destFile
+        rm $tempFile
+    fi
+}
