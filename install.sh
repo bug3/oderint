@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source data/append-remove.sh $HOME/.vimrc data/vimrc
+
 app="oderint"
 path="$HOME/.$app"
 localPath="$HOME/.local"
@@ -34,8 +36,6 @@ uninstall() {
     rm -r $path
     rm $localPath/bin/oderint
 }
-
-source data/append-remove.sh $HOME/.vimrc data/vimrc
 
 if [ $# -eq 0 ]; then
     install
