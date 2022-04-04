@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source data/config
+source data/config.sh
 
 checkFileExt() {
     case $fileExt in
