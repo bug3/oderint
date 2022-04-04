@@ -21,15 +21,15 @@ def cli(path, event, script, run_first, port):
 
     config["path"] = realpath(path)
     config["event"] = event
-    config["script"] = script
+    config["script"] = script if script is None else script.split(" ")
     config["run-first"] = run_first
     config["port"] = port
 
     info["isDir"] = isdir(path)
 
     chdir(dirname(dirname(dirname(realpath(__file__)))))
-    checkParams()
     updateJson()
+    checkParams()
     watch()
 
 
@@ -38,10 +38,12 @@ def checkParams():
         raise click.UsageError(
             f"Invalid value for '--event': Path 'events/{config['event']}' does not exist."
         )
-    if exists("scripts/" + config["script"]) == False:
-        raise click.UsageError(
-            f"Invalid value for '--script': Path 'scripts/{config['script']}' does not exist."
-        )
+
+    for i in config["script"]:
+        if exists("scripts/" + i) == False:
+            raise click.UsageError(
+                f"Invalid value for '--script': Path 'scripts/{i}' does not exist."
+            )
 
 
 def updateJson():
@@ -49,7 +51,10 @@ def updateJson():
         data = json.load(configFile)
 
         for i in config:
-            data[i] = config[i]
+            if config[i] != None:
+                data[i] = config[i]
+            else:
+                config[i] = data[i]
 
         configFile.seek(0)
         json.dump(data, configFile, indent=4)
@@ -57,7 +62,7 @@ def updateJson():
 
 
 def watch():
-    if config["runFirst"]:
+    if config["run-first"]:
         runScript()
 
     try:
@@ -81,7 +86,8 @@ def runScript():
     if not info["isDir"]:
         system("clear")
 
-    run("scripts/" + config["script"])
+    for i in config["script"]:
+        run("scripts/" + i)
 
 
 if __name__ == "__main__":
