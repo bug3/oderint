@@ -6,6 +6,7 @@ setup(
     description="The execution assistant",
     author="bug3",
     author_email="bug3dev@gmail.com",
+    url="https://github.com/bug3/oderint",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     install_requires=[
