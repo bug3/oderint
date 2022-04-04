@@ -16,7 +16,7 @@ info = {}
 @click.option("--run-first", help="Run script without listening for event")
 @click.option("--port", help="Shows which port to open localhost")
 def cli(path, event, script, run_first, port):
-    """This is description"""
+    """The execution assistant"""
     global config, info
 
     config["path"] = realpath(path)
