@@ -13,16 +13,16 @@ info = {}
 @click.argument("path", type=click.Path(exists=True))
 @click.option("--event", help="Event to be listen")
 @click.option("--script", help="The script to run when the event occurs")
-@click.option("--runfirst", help="Run script without listening for event")
+@click.option("--run-first", help="Run script without listening for event")
 @click.option("--port", help="Shows which port to open localhost")
-def cli(path, event, script, runfirst, port):
+def cli(path, event, script, run_first, port):
     """This is description"""
     global config, info
 
     config["path"] = realpath(path)
     config["event"] = event
     config["script"] = script
-    config["runFirst"] = runfirst
+    config["run-first"] = run_first
     config["port"] = port
 
     info["isDir"] = isdir(path)
