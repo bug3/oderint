@@ -1,7 +1,7 @@
 {
     "path": "test.txt",
-    "event": "temp-event",
-    "script": "temp-script",
+    "event": "on-change",
+    "script": "run format",
     "runFirst": true,
     "port": 3000
 }
