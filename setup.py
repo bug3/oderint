@@ -4,6 +4,7 @@ setup(
     name="oderint",
     version="0.0.0",
     description="The execution assistant",
+    keywords="automation formatter execution assistant",
     author="bug3",
     author_email="bug3dev@gmail.com",
     url="https://github.com/bug3/oderint",
