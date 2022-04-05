@@ -5,7 +5,7 @@ event=$(jq -r ".event" data/oderint.json)
 script=$(jq -r ".script" data/oderint.json)
 port=$(jq -r ".port" data/oderint.json)
 
-dir=$(dirname $path)
+dirname=$(dirname $path)
 tempFile="temp.out"
 
 fileName=${path##*/}
