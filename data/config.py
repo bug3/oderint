@@ -9,3 +9,8 @@ path = config["path"]
 event = config["event"]
 script = config["script"]
 port = config["port"]
+
+tempFile = "temp.out"
+dirName = dirname(path)
+fileName = basename(path)
+fileExt = splitext(path)
