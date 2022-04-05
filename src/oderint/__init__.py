@@ -69,7 +69,10 @@ def watch():
         listenEvent()
     except KeyboardInterrupt:
         if info["isDir"]:
-            run("scripts/close-port")
+            import scripts.kill_port as port
+
+            print(f"\nPort:{config['port']} closing...")
+            port.kill()
 
 
 def listenEvent():
