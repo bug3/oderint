@@ -8,6 +8,6 @@
     "procps"
   ],
   "npm": "prettier",
-  "snap": "shfmt",
-  "pip": ["click", "psutil", "live-server", "black"]
+  "snapd": "shfmt",
+  "python3-pip": ["click", "psutil", "live-server", "black"]
 }
