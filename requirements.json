@@ -1,0 +1,13 @@
+{
+  "linux": [
+    "nodejs",
+    "python-is-python3",
+    "gcc",
+    "g++",
+    "clang-format",
+    "watch"
+  ],
+  "npm": "prettier",
+  "snap": "shfmt",
+  "pip": ["click", "psutil", "live-server", "black"]
+}
