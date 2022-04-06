@@ -5,7 +5,7 @@
     "gcc",
     "g++",
     "clang-format",
-    "watch"
+    "procps"
   ],
   "npm": "prettier",
   "snap": "shfmt",
