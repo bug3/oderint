@@ -7,7 +7,7 @@
     "clang-format",
     "procps"
   ],
-  "npm": "prettier",
-  "snapd": "shfmt",
+  "npm": ["prettier"],
+  "snapd": ["shfmt"],
   "python3-pip": ["click", "psutil", "live-server", "black"]
 }
