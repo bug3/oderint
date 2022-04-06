@@ -11,7 +11,7 @@ setup(
     license="MIT",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
-    install_requires=["click", "psutil"],
+    install_requires=["click", "psutil", "live-server"],
     entry_points={
         "console_scripts": [
             "oderint = oderint:cli",
