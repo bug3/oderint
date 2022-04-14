@@ -15,7 +15,8 @@ info = {}
 @click.option("--script", help="The script to run when the event occurs")
 @click.option("--run-first", help="Run script without listening for event")
 @click.option("--port", help="Shows which port to open localhost")
-def cli(path, event, script, run_first, port):
+@click.option("--eventless", is_flag=True, help="Eventless mode")
+def cli(path, event, script, run_first, port, eventless):
     """The execution assistant"""
     global config, info
 
@@ -26,6 +27,7 @@ def cli(path, event, script, run_first, port):
     config["port"] = port
 
     info["isDir"] = isdir(path)
+    info["eventless"] = eventless
 
     chdir(dirname(dirname(dirname(realpath(__file__)))))
     updateJson()
@@ -66,7 +68,8 @@ def watch():
         runScript()
 
     try:
-        listenEvent()
+        if not info["eventless"]:
+            listenEvent()
     except KeyboardInterrupt:
         if info["isDir"]:
             import scripts.kill_port as port
