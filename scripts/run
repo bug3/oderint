@@ -22,6 +22,9 @@ checkFileExt() {
         js)
             node $path
             ;;
+        sh)
+            /bin/bash $path
+            ;;
         *)
             if [[ -x $path ]]; then
                 cd $(dirname $path)

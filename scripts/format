@@ -11,7 +11,7 @@ checkFileExt() {
             black -q $path
             ;;
         *)
-            if [[ -x $path ]]; then
+            if [[ -x $path || $fileExt == "sh" ]]; then
                 shfmt -w -sr -ci -i=4 $path
             else
                 echo "$fileExt extension not defined"
