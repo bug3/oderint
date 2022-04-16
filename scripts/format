@@ -8,7 +8,7 @@ checkFileExt() {
             clang-format -i -style=Google $path
             ;;
         go)
-            go fmt $path
+            gofmt -w $path
             ;;
         py)
             black -q $path
