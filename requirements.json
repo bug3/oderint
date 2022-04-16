@@ -6,7 +6,7 @@
     "gcc",
     "g++",
     "clang-format",
-    "procps"
+    "inotify-tools"
   ],
   "npm": ["prettier"],
   "snapd": ["shfmt"],
