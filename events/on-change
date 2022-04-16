@@ -1,5 +1,0 @@
-#!/bin/bash
-
-source data/config.sh
-
-watch -d -t -g -n .666 ls -lR $path
