@@ -1,5 +1,6 @@
 {
   "linux": [
+    "golang-go",
     "nodejs",
     "python-is-python3",
     "gcc",
