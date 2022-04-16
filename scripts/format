@@ -7,6 +7,9 @@ checkFileExt() {
         c | cpp | js)
             clang-format -i -style=Google $path
             ;;
+        go)
+            go fmt $path
+            ;;
         py)
             black -q $path
             ;;

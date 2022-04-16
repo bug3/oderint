@@ -16,11 +16,14 @@ checkFileExt() {
                 rm $tempFile
             fi
             ;;
-        py)
-            python $path
+        go)
+            go run $path
             ;;
         js)
             node $path
+            ;;
+        py)
+            python $path
             ;;
         sh)
             /bin/bash $path
