@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source data/config.sh
+
+inotifywait -q -e close_write $path |
+    if read -r filename event; then
+        exit 0
+    fi
