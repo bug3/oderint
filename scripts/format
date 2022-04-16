@@ -24,7 +24,7 @@ checkFileExt() {
     esac
 }
 
-if [[ -d $path ]]; then
+if [[ -d $path || $fileExt == "json" ]]; then
     prettier -w --loglevel error $path
 else
     checkFileExt
