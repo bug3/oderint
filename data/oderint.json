@@ -3,5 +3,5 @@
   "event": "on-save",
   "script": ["run", "format"],
   "run-first": true,
-  "port": 3000
+  "port": 8128
 }
