@@ -1,5 +1,5 @@
 {
-  "path": "test.txt",
+  "path": "oderint<dum>metuant",
   "event": "on-save",
   "script": ["run", "format"],
   "run-first": true,
