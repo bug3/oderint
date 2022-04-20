@@ -67,15 +67,8 @@ def watch():
     if config["run-first"]:
         runScript()
 
-    try:
-        if not info["eventless"]:
-            listenEvent()
-    except KeyboardInterrupt:
-        if info["isDir"]:
-            import scripts.kill_port as port
-
-            print(f"\nPort:{config['port']} closing...")
-            port.kill()
+    if not info["eventless"]:
+        listenEvent()
 
 
 def listenEvent():
