@@ -10,5 +10,5 @@
   ],
   "npm": ["prettier"],
   "snapd": ["shfmt"],
-  "python3-pip": ["click", "psutil", "live-server", "black"]
+  "python3-pip": ["click", "psutil", "black"]
 }
