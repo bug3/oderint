@@ -42,8 +42,7 @@ checkFileExt() {
 
 if [[ -d $path ]]; then
     if ! lsof -i:$port &> /dev/null; then
-        live-server --port $port $path &
-        xdg-open http://localhost:$port
+        live-server --quiet --port=$port $path
     fi
 else
     checkFileExt
