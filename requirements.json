@@ -8,7 +8,7 @@
     "clang-format",
     "inotify-tools"
   ],
-  "npm": ["prettier"],
+  "npm": ["prettier", "live-server"],
   "snapd": ["shfmt"],
   "python3-pip": ["click", "psutil", "black"]
 }
